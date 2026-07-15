@@ -3,7 +3,7 @@ developer: Connor Davenport
 developerURL: https://programme.tools
 launchAtStartUp: true
 mainScript: 'main.py'
-version: '1.0'
+version: '1.000'
 addToMenu:
 - path: ui.py
   preferredName: Pinned
