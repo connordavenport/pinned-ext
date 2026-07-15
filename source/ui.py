@@ -11,14 +11,13 @@ class PinnedController(ezui.WindowController):
         self.pinned = getExtensionDefault(EXTENSION_KEY, [])
 
         menubar = AppKit.NSApp().mainMenu()
-        extensionsItem = menubar.itemWithTitle_("Extensions")
-        self.extensionsMenu = extensionsItem.submenu()
-        self._array = list(self.extensionsMenu.itemArray().copy())
+        self.extensions_menu = menubar.itemWithTitle_("Extensions").submenu()
+        self._array = list(self.extensions_menu.itemArray().copy())
 
         extensions_list = sorted(
             [
                 i.title()
-                for i in list(self.extensionsMenu.itemArray().copy())
+                for i in list(self.extensions_menu.itemArray().copy())
                 if i.title() not in ["Mechanic", "", PINNED_HEADER]
             ]
         )

@@ -9,13 +9,12 @@ EXTENSION_KEY = "tools.programme.ext_pin"
 def rebuildMenu(pinned: list[str] = []) -> None:
 
     menubar = AppKit.NSApp().mainMenu()
-    extensionsItem = menubar.itemWithTitle_("Extensions")
-    extensionsMenu = extensionsItem.submenu()
-    _array = list(extensionsMenu.itemArray().copy())
+    extensions_menu = menubar.itemWithTitle_("Extensions").submenu()
+    _array = list(extensions_menu.itemArray().copy())
     item_array = AppKit.NSMutableArray.alloc().init()
     header = _array[:2]  # header will always be Mechanic + seperator
     _array = _array[2:]
-    pinnedObjects = [
+    pinned_objects = [
         p for p in _array if p.title() in pinned
     ]  # get the objects from the current menu that will be pinned
     for temp in _array:
@@ -27,7 +26,7 @@ def rebuildMenu(pinned: list[str] = []) -> None:
         item_array.addObject_(i)
     if pinned:
         item_array.addObject_(AppKit.NSMenuItem.sectionHeaderWithTitle_(PINNED_HEADER))
-        for p in pinnedObjects:
+        for p in pinned_objects:
             item_array.addObject_(p)
         item_array.addObject_(AppKit.NSMenuItem.separatorItem())
 
@@ -38,7 +37,7 @@ def rebuildMenu(pinned: list[str] = []) -> None:
         else:
             item_array.addObject_(item)
     built_menu = AppKit.NSArray.alloc().initWithArray_(item_array)
-    extensionsMenu.setItemArray_(built_menu)
+    extensions_menu.setItemArray_(built_menu)
 
 
 class PinnedSubscriber(Subscriber):
