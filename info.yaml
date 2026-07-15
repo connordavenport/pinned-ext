@@ -1,0 +1,13 @@
+name: Pinned
+developer: Connor Davenport
+developerURL: https://programme.tools
+launchAtStartUp: true
+mainScript: 'main.py'
+version: '1.0'
+addToMenu:
+- path: ui.py
+  preferredName: Pinned
+  shortKey: ''
+html: false
+requiresVersionMajor: '4'
+requiresVersionMinor: '5'
